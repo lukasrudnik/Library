@@ -1,6 +1,6 @@
 <?php
 
-include 'connection.php';
+include 'connectionToDB.php';
 
 $sql = "CREATE TABLE Books (
         id INT PRIMARY KEY AUTO_INCREMENT,
