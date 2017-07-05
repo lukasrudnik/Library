@@ -1,12 +1,15 @@
+<?php
+?>
 <!DOCTYPE html>
+
 <DOCTYPE !html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <title>Library page</title>
-        <!-- Link do bibliotekij Query z interfejsem AJAX-->
+        <!--Link do bibliotekij jQuery z interfejsem AJAX-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!--        <script src=""></script> -->
+        <script src="js/application.js"></script>
     </head>
     <body>
         <nav>
@@ -35,7 +38,7 @@
                 <input id="addBook" type="submit" value="Add Book" placeholder="addBook">
             </form>
             <form method="GET">
-                <input id="showBooks" type="submit" value="showBooks">
+                <input id="showBooks" type="submit" value="Show Books">
             </form>
             <h3>Book lists:</h3>
         </main>
@@ -43,3 +46,4 @@
         </footer>
     </body>
 </html>
+

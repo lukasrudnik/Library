@@ -11,6 +11,7 @@ if ($connect->connect_error){
     die("Error connect to database! <br> " . $connect->connect_error);
 }
 
+// połączenie do DB poprzez klasę
 //class database{
 //    
 //    // brak połączenia do bazy danych - metoda statyczna, uruchamiana przez self::

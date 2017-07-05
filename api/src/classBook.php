@@ -1,5 +1,4 @@
 <?php
-
 // klasa Book implementuje serializacje obiektów php przez JSON
 class Book implements JsonSerializable{
     
@@ -17,8 +16,7 @@ class Book implements JsonSerializable{
         $this->description = '';
     }
     
-    // GETERY
-    
+    // GETERY   
      function getId(){
         return $this->id;
     }
@@ -35,50 +33,45 @@ class Book implements JsonSerializable{
         return $this->description;
     }
     
-    // SETERY
-    // id nie ma setera bo jest ustawione na -1 (null)
-     
-    function setTitle($title){
-        $this->title = $title;
-    }
-    
+    /* SETERY
+     id nie ma setera bo jest ustawione na -1 (null) */  
     function setAuthor($author){
         $this->author = $author;
     }
     
+    function setTitle($title){
+        $this->title = $title;
+    }
+        
     function setDescription($description){
         $this->description = $description;
     }
     
     
-    // implementujemy co ma być zwrócone i przekazane do funkcji json_encode
-    public function jsonSerialize(){
+    // implementujemy poprzez jsonSerialize() co ma być zwrócone i przekazane do funkcji json_encode
+    public function jsonSerialize(){      
         
+        // Zwracam tablice assocjacyjną z kluczem: id => o wartości: this->id 
         return [
             'id' => $this->id,
             'title' => $this->title,
             'author' => $this->author,
             'description' => $this->description
-        ];
-        // zwraca tablice assocjacyjną z np.: kluczem id=> (o wartości) $this->id 
+        ]; 
     }
     
     
-    // funkcja statyczna bo nie ma takiego obiektu w klasie Book
-    public static function loadFromDB(mysqli $connection, $id){
+    /* funkcja statyczna bo nie ma takiego obiektu w klasie Book
+     Ładowaie wszystkich książek z DB */
+    public static function loadFromDB(mysqli $connection){
         
-        if(is_null($id)){     
-            $result = $connection->query("SELECT * FROM Books");
-        }
-        else{
-            $result = $connection->query("SELECT * FROM Books WHERE id=" . intval($id));
-            // intval pobiera wartość całkowitą zmiennej
-        }
+        $sql = "SELECT * FROM Books";
         
         $bookList = [];
-        
+      
+        $result = $connection->query($sql); 
         if($result == true && $result->num_rows > 0){
-            foreach ($result as $row){    
+            foreach ($result as $row){
                 
                 $book = new Book();
                 $book->id = $row['id'];
@@ -86,18 +79,17 @@ class Book implements JsonSerializable{
                 $book->author = $row['author'];
                 $book->description = $row['description'];   
                 
-                $bookList[] = json_encode($book);
-                // json_encode() zwraca wartość JSON - przy przekazaniu obiektu do funkcji jsonSerialize
+                $bookList[] = $book;     
             }
         }
         return $bookList;
     }
     
     
-    // ładowanie książki z bazy danych poprzez id
+    // Ładowanie książki z DB poprzez id
     static public function loadById(mysqli $connection, $id){
         
-        $sql = "SELECT * FROM Books WHERE ID = "; // . $connection ->real_escape_string($id);
+        $sql = "SELECT * FROM Books WHERE id = $id";
         
         $result = $connection->$query($sql);    
         if($result == true && $result->num_rows == 1){
@@ -113,9 +105,9 @@ class Book implements JsonSerializable{
         }
         return null;     
     }
+
     
-    
-    // dodawaie książki do bazy danych 
+    // Dodawaie książki do DB
     public function addBook(mysqli $connection){
         
         if($this->id == -1){
@@ -133,7 +125,7 @@ class Book implements JsonSerializable{
     }
 
     
-    // aktualizacia książki
+    // Aktualizacia książki
     public function updateBook(mysli $connection){
         
         if($this->id != 1){
@@ -149,19 +141,19 @@ class Book implements JsonSerializable{
     }
     
     
-    // usuwanie książki
+    // Usuwanie książki
     public function deleteBook(mysqli $connection){
         
         if($this->id != -1){
-            $sql = "DELETE FROM Books WHERE id = " . $this->id;
+            $sql = "DELETE FROM Books WHERE id = {$this->id}";
             
             $result = $connection->$query($sql);    
             if($result == true){
+                $this->id = -1;
             }
             return false;
         }
     }
     
 }
-
 ?>
