@@ -111,7 +111,7 @@ class Book implements JsonSerializable{
     public function addBook(mysqli $connection){
         
         if($this->id == -1){
-            $sql = "INSRER INTO Books (title, author, description) VALUES 
+            $sql = "INSERT INTO Books (title, author, description) VALUES 
             ('{$this->tittle}' , '{$this->author}' , '{$this->description}')";
             
             $result = $connection->$query($sql);    

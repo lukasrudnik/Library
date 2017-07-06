@@ -37,16 +37,16 @@ switch($_SERVER['REQUEST_METHOD']){
            isset($_POST['author']) && strlen($_POST['author']) > 0 &&
            isset($_POST['description']) && strlen($_POST['description']) > 0){
             
-            if(!empty($_POST['title']) . $connect->real_escape_string($title) && 
-               !empty($_POST['author']) . $connect->real_escape_string($author) &&
-               !empty($_POST['description']) . $connect->real_escape_string($description)){
+//            if(!empty($_POST['title']) . $connect->real_escape_string($title) && 
+//               !empty($_POST['author']) . $connect->real_escape_string($author) &&
+//               !empty($_POST['description']) . $connect->real_escape_string($description)){
                
                 $newBook = new Book();
                 $newBook->setAuthor($_POST['author']);
                 $newBook->setTitle($_POST['title']);
                 $newBook->setDescription($_POST['description']);
             
-            }
+//            }
         }
         
         if($newBook->addBook($connect)){
@@ -59,21 +59,21 @@ switch($_SERVER['REQUEST_METHOD']){
      
     // PUT – używany do zmiany informacji (update)
     case('PUT'):
-        parse_str(file_get_contents('php://input'), $row);
+        parse_str(file_get_contents('php://input'), $put_vars);
     
-        if(isset($row['id']) &&
-           (isset($row['updateAuthor']) && strlen($row['updateAuthor']) > 0) ||
-           (isset($row['updateTitle']) && strlen($row['updateTitle']) > 0) ||
-           (isset($row['updateDescription']) && strlen($row['updateDescription']) > 0)){
+        if(isset($put_vars['id']) &&
+           (isset($put_vars['updateAuthor']) && strlen($put_vars['updateAuthor']) > 0) ||
+           (isset($put_vars['updateTitle']) && strlen($put_vars['updateTitle']) > 0) ||
+           (isset($put_vars['updateDescription']) && strlen($put_vars['updateDescription']) > 0)){
             
             if(!empty($_POST['title']) . $connect->real_escape_string($title) && 
                !empty($_POST['author']) . $connect->real_escape_string($author) &&
                !empty($_POST['description']) . $connect->real_escape_string($description)){
               
-                $id = $row['id'];
-                $updateAuthor = $row['updateAuthor'];
-                $updateDescription = $row['updateDescription'];
-                $updateTitle = $row['updateTitle'];
+                $id = $put_vars['id'];
+                $updateAuthor = $put_vars['updateAuthor'];
+                $updateDescription = $put_vars['updateDescription'];
+                $updateTitle = $put_vars['updateTitle'];
             
                 $book = Book::loadById($connect, $id);
                 $book->setAuthor($updateAuthor);
@@ -87,9 +87,9 @@ switch($_SERVER['REQUEST_METHOD']){
         
     // DELETE – używany do usuwania danych.
     case('DELETE'):
-        parse_str(file_get_contents('php://input'), $row);
+        parse_str(file_get_contents('php://input'), $put_vars);
         
-        $id = $row['id'];
+        $id = $put_vars['id'];
         $book = Book::loadById($connect, $id);
         if($book->deleteBook($connect)){
             $result = "Book deleted";

@@ -1,13 +1,13 @@
 <?php
 ?>
-<!DOCTYPE html>
 
-<DOCTYPE !html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <title>Library page</title>
-        <!--Link do bibliotekij jQuery z interfejsem AJAX-->
+<!--        Link do bibliotekij jQuery z interfejsem AJAX-->
+<!--        <link rel="stylesheet" href="css/style.css">-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="js/application.js"></script>
     </head>
@@ -15,6 +15,7 @@
         <nav>
         </nav>
         <main>
+           <section>
             <form>
                 <h3>Add book:</h3>
                 <label>
@@ -37,13 +38,17 @@
                 </label>
                 <input id="addBook" type="submit" value="Add Book" placeholder="addBook">
             </form>
+            </section>
+            <section>
             <form method="GET">
                 <input id="showBooks" type="submit" value="Show Books">
             </form>
             <h3>Book lists:</h3>
+            <div id="bookList">       
+            </div>
+            </section>
         </main>
         <footer>
         </footer>
     </body>
 </html>
-
