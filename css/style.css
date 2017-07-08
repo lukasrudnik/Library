@@ -1,9 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+/*Import Google Web Font in CSS file: @import url('https://fonts.googleapis.com/css?family=Open+Sans');*/
 
-body {
-    background-color: whitesmoke;
-    font-family: 'OpenSans', sans-serif;
-}
 .bookForm {
 min-width : 25%;
 min-height: 25%;
@@ -49,10 +45,7 @@ text-align: center;
     transform: scale(1.1);
     transition-duration: 0.3s;
 }
-img {
-    width: 150px;
-    height: 150px;
-}
+
 .singleBook {
     float:left;
     width: 300px;

@@ -1,54 +1,59 @@
-<?php
-?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Library page</title>
-<!--        Link do bibliotekij jQuery z interfejsem AJAX-->
-<!--        <link rel="stylesheet" href="css/style.css">-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="js/application.js"></script>
+        <title>Library</title>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/jquery-3.2.1.js"></script>
+        <script src="js/app.js"></script>
+        <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     </head>
     <body>
-        <nav>
+        <nav class="navbar navbar-inverse bg-primary">
+           <div class="container-fluid">
+               <div class="navbar-header navbar-left">
+                   <a class="navbar-brand">Welcome in Library</a>
+               </div>
+            </div>
         </nav>
         <main>
-           <section>
+            <section class="bookForm">    
             <form>
-                <h3>Add book:</h3>
+                <br><h3>Add new book:</h3><br><br>
                 <label>
                     Title:
-                    <br>
-                    <input id="addTitle" type="text" placeholder="title" name="title">
+                    <br><br>
+                    <input id="titleInput" class="form-control" type="text" placeholder="Add title" name="title">
                     <br>
                 </label>
                 <label>
                     Author:
-                    <br>
-                    <input id="addAuthor" type="text" placeholder="author" name="author">
+                    <br><br>
+                    <input id="authorInput" class="form-control" type="text" placeholder="Add author" name="author">
                     <br>
                 </label>
                 <label>
-                    Describe:
-                    <br>
-                    <input id="addDescription" type="text" placeholder="description" name="description">
+                    Description:
+                    <br><br>
+                    <input id="descriptionInput" class="form-control" type="text"
+                            placeholder="Add description" name="description">
                     <br>
                 </label>
-                <input id="addBook" type="submit" value="Add Book" placeholder="addBook">
+                <input id="addBook" type="submit" value="Add Book" placeholder="Add book">
             </form>
             </section>
-            <section>
+            <section class="showBooks">
             <form method="GET">
-                <input id="showBooks" type="submit" value="Show Books">
+                <input id="showBooks" type="submit" value="Show books">
             </form>
-            <h3>Book lists:</h3>
-            <div id="bookList">       
+            <br><h3>Books list:</h3><br><br>
+            <div id="bookList">
             </div>
             </section>
         </main>
-        <footer>
-        </footer>
     </body>
+     <footer>
+    </footer>
 </html>

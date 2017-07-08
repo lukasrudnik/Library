@@ -1,40 +1,40 @@
-$(function () {
-
-    function loadAllBooks(){
-        $.ajax({
-            url: 'api/books.php',
-            type: 'GET',
-            dataType: 'json',
-            success: function(result){
-                //w result jest lista ksiazek
-                for (var i = 0; i < result.length; i++) {
-                    //obiekt js z pojedyncza ksiazka
-                    var bookList = JSON.parse(result[i]);
-                    var bookDiv = $('<div>');
-                    bookDiv.addClass('singleBook');
-                    bookDiv.html('<h3 data-id="' + book.id + '">' + bookList.title + '</h3></div></div>');
-                    $('#bookList').append(bookDiv)
-                }
-            },
-            error: function () {
-                console.log('wystapil blad');
-            }
-        })
-    }
-
-    function reload() {
-        $('#bookList').html('');
-        loadAllBooks();
-    }
-
-    $('#showBooks').on('click', function (event) {
-        $('#bookList').html('');
-        event.preventDefault();
-        loadAllBooks();
-
-    })
-
-
+//$(function () {
+//
+//    function loadAllBooks() {
+//        $.ajax({
+//            url: 'api/Books.php',
+//            type: 'GET',
+//            dataType: 'json',
+//            success: function (result) {
+//                //w result jest lista ksiazek
+//                for (var i = 0; i < result.length; i++) {
+//                    //obiekt js z pojedyncza ksiazka
+//                    var book = JSON.parse(result[i]);
+//                    var bookDiv = $('<div>');
+//                    bookDiv.addClass('singleBook');
+//                    bookDiv.html('<h3 data-id="' + book.id + '">' + book.title + '</h3><div class="description"></div></div>');
+//                    $('#bookList').append(bookDiv)
+//                }
+//            },
+//            error: function () {
+//                console.log('wystapil blad');
+//            }
+//        });
+//    }
+//
+//    function reload() {
+//        $('#bookList').html('');
+//        loadAllBooks();
+//    }
+//
+//    $('#showBooks').on('click', function (event) {
+//        $('#bookList').html('');
+//        event.preventDefault();
+//        loadAllBooks();
+//
+//    })
+//
+//
 //    $('#addBook').on('click', function (event) {
 //        event.preventDefault();
 //        var addTitle = $('#titleInput').val();
@@ -63,7 +63,7 @@ $(function () {
 //        });
 //    });
 //
-
+//
 //    $('#bookList').on('click', '.singleBook', function showForm() {
 //        event.preventDefault();
 //        var book = {};
@@ -158,4 +158,4 @@ $(function () {
 //            }
 //        });
 //    });
-})
+//})

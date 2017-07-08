@@ -1,5 +1,4 @@
 <?php
-
 include 'connectionToDB.php';
 
 $sql = "CREATE TABLE Books (
@@ -17,5 +16,4 @@ else{
     ("Błąd podczas tworzenia tabeli Books!" . "<br>" . $connect->error);
 }
 echo "<br>";
-
 ?>

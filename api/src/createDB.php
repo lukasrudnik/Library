@@ -1,5 +1,4 @@
 <?php
-
 $servername = 'localhost';
 $username = 'root';
 $basename = '';
@@ -23,5 +22,4 @@ if ($result != FALSE){
 else{
     echo("Błąd podczas tworzenia bazy danych!" . "<br>" . $connect->error);
 }
-
 ?>
