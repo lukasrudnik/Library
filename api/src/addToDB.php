@@ -2,7 +2,7 @@
 include 'connectionToDB.php';
 
 //dodawanie elemtów do tabeli:
-$sql = "INSERT INTO Books(title, author, description) VALUES('Tytul0' , 'Autor0' , 'Opis0')";
+$sql = "INSERT INTO Books(title, author, description) VALUES('Tytul' , 'Autor' , 'Opis')";
 
 if ($connect->query($sql) === TRUE){
     echo("Wartości zostały dodane <br>");

@@ -1,12 +1,6 @@
 <?php
-/*
-dirname(__FILE__) — zwraca scieżkę pliku 
-intval - pobiera wartość całkowitą zmiennej
-json_encode() zwraca wartość JSON - przekazaną wcześniej przez jsonSerialize
-*/
-
-/* Dołączanie dodatkowych plików 
-Nie działa z  __DIR__ - jest szybsze i nowsze */
+/* $dirname(__FILE__) — zwraca scieżkę pliku 
+Dołączanie dodatkowych plików nie działa z __DIR__ (jest podobno szybsze i nowsze) */
 $dirname = dirname(__FILE__);
 
 include($dirname . '/src/connectionToDB.php');
@@ -24,14 +18,15 @@ switch($_SERVER['REQUEST_METHOD']){
     case('GET'): 
         
         if(isset($_GET['id']) && intval($_GET['id']) > 0){ 
-            // Pobieram pojedynczą książkę po jej ID
-            $books = Book:: loadFromDB($connect, $_GET['id']);
+            // Pobieram pojedynczą książkę po jej ID (intval - pobiera wartość całkowitą zmiennej)
+            $book = Book:: loadFromDB($connect, $_GET['id']);
         }
         else{
             // Lub pobieram wszystkie książki
-            $books = Book::loadFromDB($connect);
+            $book = Book::loadFromDB($connect);
         } 
-        echo json_encode($books);
+        echo json_encode($book);
+        // json_encode() zwraca wartość JSON - przekazaną wcześniej przez jsonSerialize
         break;
         
 // POST – używany do wysyłania informacji z formularzy do DB        
@@ -85,33 +80,26 @@ switch($_SERVER['REQUEST_METHOD']){
            (isset($put_vars['updateAuthor']) && strlen($put_vars['updateAuthor']) > 0) ||
            (isset($put_vars['updateDescription']) && strlen($put_vars['updateDescription']) > 0) ||
            (isset($put_vars['updateTitle']) && strlen($put_vars['updateTitle']) > 0)){
-           
-//            if(!empty($put_vars['updateTitle']) . 
-//               $connect->real_escape_string($put_vars['updateTitle']) && 
-//               !empty($put_vars['updateAuthor']) . 
-//               $connect->real_escape_string($put_vars['updateAuthor']) &&
-//               !empty($put_vars['updateDescription']) .
-//               $connect->real_escape_string($put_vars['updateDescription'])){
-            
-                // Dane przesłane formulrzem metodą PUT
-                $id = $put_vars['id'];
-                $updateAuthor = $put_vars['updateAuthor'];
-                $updateDescription = $put_vars['updateDescription'];
-                $updateTitle = $put_vars['updateTitle'];
+             
+            // Dane przesłane formulrzem metodą PUT
+            $id = $put_vars['id'];
+            $updateAuthor = $put_vars['updateAuthor'];
+            $updateDescription = $put_vars['updateDescription'];
+            $updateTitle = $put_vars['updateTitle'];
 
-                // Łapię książkę po jej ID i podmieniam dane przesłane formularzem PUT na tej książce
-                $book = Book::loadBookById($connect, $id);
-                $book->setAuthor($updateAuthor);
-                $book->setDescription($updateDescription);
-                $book->setTitle($updateTitle);
-                $book->updateBook($connect);
-                echo json_encode($book);
-//            }
+            // Łapię książkę po jej ID i podmieniam dane przesłane formularzem PUT na tej książce
+            $book = Book::loadBookById($connect, $id);
+            $book->setAuthor($updateAuthor);
+            $book->setDescription($updateDescription);
+            $book->setTitle($updateTitle);
+            $book->updateBook($connect);
+            echo json_encode($book);
         }
         break;
         
-// DELETE – używany do usuwania danych.      
-    case('DELETE'):
+/* DELETE – używany do usuwania danych 
+Usuwanie działa przez formularz POST (bez tego)
+case('DELETE'):
         
         parse_str(file_get_contents('php://input'), $put_vars);
         
@@ -127,5 +115,7 @@ switch($_SERVER['REQUEST_METHOD']){
         }
         echo json_encode($result);
         break;
+*/  
+        
 }
 ?>

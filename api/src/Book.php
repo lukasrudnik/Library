@@ -69,21 +69,21 @@ zwracam tablice assocjacyjną z kluczem: id => o wartości: this->id */
             $result = $connection->query("SELECT * FROM Books WHERE id = '" . intval($id) . "'");
         }                                // intval — Get the integer value of a variable
         
-        $bookList = [];
+        $booksList = [];
         
         if($result == true && $result->num_rows > 0){
             foreach ($result as $row){
                 
-                $dbBook  = new Book();
-                $dbBook->id = $row['id'];
-                $dbBook->title = $row['title'];
-                $dbBook->author = $row['author'];
-                $dbBook->description = $row['description'];
+                $book  = new Book();
+                $book->id = $row['id'];
+                $book->title = $row['title'];
+                $book->author = $row['author'];
+                $book->description = $row['description'];
                 
-                $bookList [] = json_encode($dbBook);
+                $booksList [] = json_encode($book);
             }
         }
-        return $bookList;
+        return $booksList;
     }
     
     

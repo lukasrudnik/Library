@@ -1,55 +1,46 @@
-/*Import Google Web Font in CSS file: @import url('https://fonts.googleapis.com/css?family=Open+Sans');*/
-
-.bookForm {
-min-width : 25%;
-min-height: 25%;
-margin: 0 auto;
-text-align: center;
-}
-#addBook {
+/*Import Google Web Font in CSS file: @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+Sample skeleton CSS:*/
+/*.bookForm{
+min-width:
+min-height:
+margin:
+text-align:
+}#addBook{
     display: block;
-    width: 90px;
-    height: 30px;
-    margin: 0 auto;
-    margin-top: 10px;
-    font-weight: bold;
-    background-color: #0088CC;
-    border-color:#0088CC;
-    border-radius: 10px;
-
-}
-#addBook:hover {
-    background-color: #0077DD;
+    width:
+    height:
+    margin:
+    margin-top:
+    font-weight:
+    background-color:
+    border-color:
+    border-radius:
+}#addBook:hover{
+    background-color:
+    transform:
+    transition-duration:
+}.showBooks{
+    width:
+    max-height:
+    margin:
+    text-align:
+}#showBooks{
+    display:
+    width:
+    height:
+    margin:
+    margin-top:
+    font-weight:
+    background-color:
+    border-color:
+    border-radius:
+}#showBooks:hover{
+    background-color:
     transform: scale(1.1);
     transition-duration: 0.3s;
-}
-.showBooks {
-    width: 100%;
-    max-height: 100%;
-    margin:0 auto;
-    text-align: center;
-}
-#showBooks {
-    display: block;
-    width: 90px;
-    height: 30px;
-    margin: 0 auto;
-    margin-top: 10px;
-    font-weight: bold;
-    background-color: #0088CC;
-    border-color:#0088CC;
-    border-radius: 10px;
-}
-#showBooks:hover {
-    background-color: #0077DD;
-    transform: scale(1.1);
-    transition-duration: 0.3s;
-}
-
-.singleBook {
-    float:left;
-    width: 300px;
-    height: 400px;
-    border: solid black 4px;
-    border-radius: 15px;
-}
+}.singleBook{
+    float:
+    width:
+    height:
+    border:
+    border-radius:}*/

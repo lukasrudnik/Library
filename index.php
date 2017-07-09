@@ -3,7 +3,6 @@
     <head>
         <meta charset="UTF-8">
         <title>Library</title>
-        <link rel="stylesheet" href="css/style.css">
         <script src="js/jquery-3.2.1.js"></script>
         <script src="js/app.js"></script>
         <link rel="stylesheet"
@@ -14,46 +13,45 @@
         <nav class="navbar navbar-inverse bg-primary">
            <div class="container-fluid">
                <div class="navbar-header navbar-left">
-                   <a class="navbar-brand">Welcome in Library</a>
+                   <a class="navbar-brand">Welcome in Library !</a>
                </div>
             </div>
         </nav>
         <main>
+        <div class="container">
+        <div class="jumbotron"> 
             <section class="bookForm">    
             <form>
-                <br><h3>Add new book:</h3><br><br>
+                <h2>Add new book:</h2><br><br>
                 <label>
-                    Title:
-                    <br><br>
-                    <input id="titleInput" class="form-control" type="text" placeholder="Add title" name="title">
-                    <br>
+                    Title:<br><br>
+                    <input id="titleInput" class="form-control" type="text" placeholder="Add title"
+                    name="title"><br>
                 </label>
                 <label>
-                    Author:
-                    <br><br>
-                    <input id="authorInput" class="form-control" type="text" placeholder="Add author" name="author">
-                    <br>
+                    Author:<br><br>
+                    <input id="authorInput" class="form-control" type="text" placeholder="Add author" name="author"><br>
                 </label>
                 <label>
-                    Description:
-                    <br><br>
+                    Description:<br><br>
                     <input id="descriptionInput" class="form-control" type="text"
-                            placeholder="Add description" name="description">
-                    <br>
-                </label>
-                <input id="addBook" type="submit" value="Add Book" placeholder="Add book">
+                    placeholder="Add description" name="description"><br>
+                </label><br>
+                <input id="addBook" type="submit" class="btn btn-success" value="Add Book"
+                placeholder="Add book"><br><br>
             </form>
             </section>
             <section class="showBooks">
             <form method="GET">
-                <input id="showBooks" type="submit" value="Show books">
+                <input id="showBooks" type="submit" class="btn btn-primary" value="Show books">
             </form>
-            <br><h3>Books list:</h3><br><br>
-            <div id="bookList">
-            </div>
+            <br><h2>Books list:</h2><br><br>
+            <div id="bookList"></div>
             </section>
+        </div>
+        </div>
         </main>
     </body>
-     <footer>
-    </footer>
+    <footer>
+    </footer>  
 </html>
